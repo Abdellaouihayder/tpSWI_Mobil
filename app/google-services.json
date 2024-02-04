@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "1034307873740",
+    "firebase_url": "https://swimobil-default-rtdb.firebaseio.com",
+    "project_id": "swimobil",
+    "storage_bucket": "swimobil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034307873740:android:0e6312353cea392e768b69",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSGF67i7iNQuza_PFo25KC370sOJeA0kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034307873740:android:750e7e7d5a5c1d06768b69",
+        "android_client_info": {
+          "package_name": "com.example.app_tp1swi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSGF67i7iNQuza_PFo25KC370sOJeA0kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

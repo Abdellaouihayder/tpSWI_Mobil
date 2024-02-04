@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".forgot_pass"
+    android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10sp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10sp"
+                android:layout_marginTop="20sp"
+                android:layout_marginEnd="10sp"
+                android:layout_marginBottom="10sp"
+                android:text="Hi user,Write here your \nEmail and you wil receive \nan Email to change your \npassword"
+                android:textColor="@color/bnb"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="140dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="-16dp"
+                android:src="@drawable/img_1" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50sp"
+            android:textStyle="bold"
+            android:textColor="@color/bnb"
+            android:textSize="30sp"
+            android:text="Forgot password"
+            android:layout_gravity="center"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape"
+            android:layout_marginTop="50dp"
+            android:padding="15sp"
+           >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:drawableEnd="@drawable/email"
+                android:drawableTint="@color/bnb"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset password"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/bnb"
+                android:textColor="@color/black"
+                android:layout_marginTop="10sp"
+
+                />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/backtologin"
+            android:layout_width="140sp"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/bnb"
+            android:textColor="@color/black"
+            android:layout_marginTop="50sp"
+            android:drawableLeft="@drawable/back"
+            />
+
+    </LinearLayout>
+
+</ScrollView>
