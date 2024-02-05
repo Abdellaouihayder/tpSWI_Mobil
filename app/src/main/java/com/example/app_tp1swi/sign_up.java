@@ -63,6 +63,7 @@ private ProgressDialog progressDialog;
     }
 
     private boolean validate() {
+        int i=8;
         boolean res=false;
         names=name.getText().toString().trim();
         emails=email.getText().toString().trim();
@@ -83,6 +84,7 @@ private ProgressDialog progressDialog;
             res=true;
         }
         return res;
+        int i=8;
     }
 
     private boolean isValidEmail(String email){
