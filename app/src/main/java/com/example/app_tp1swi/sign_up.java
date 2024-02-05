@@ -84,7 +84,7 @@ private ProgressDialog progressDialog;
             res=true;
         }
         return res;
-        int i=8;
+
     }
 
     private boolean isValidEmail(String email){
