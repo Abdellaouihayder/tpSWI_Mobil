@@ -54,6 +54,7 @@
             android:padding="15sp"
            >
             <EditText
+                android:id="@+id/emailforgot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -68,6 +69,7 @@
 
                 />
             <Button
+                android:id="@+id/btnforgot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reset password"
