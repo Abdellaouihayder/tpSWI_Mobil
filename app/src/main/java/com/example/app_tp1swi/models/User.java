@@ -2,11 +2,11 @@ package com.example.app_tp1swi.models;
 
 public class User {
 
-    public String fullname,Email,phone,password;
+    public String fullname,email,phone,password;
 
     public User(String fullname, String email, String phone, String password) {
         this.fullname = fullname;
-       this.Email = email;
+       this.email = email;
         this.phone = phone;
         this.password = password;
     }
@@ -17,7 +17,7 @@ public class User {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getPhone() {
@@ -33,7 +33,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public void setPhone(String phone) {

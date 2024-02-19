@@ -27,7 +27,6 @@ private ProgressDialog progressDialog;
 private static final String mail_regex="^[A-Za-z0-9+_.-]+@(.+)$";
 private String emails,pwds;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
