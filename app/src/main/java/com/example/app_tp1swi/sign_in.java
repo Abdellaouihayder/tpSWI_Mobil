@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ private Button btnsignin;
 private FirebaseAuth firebaseAuth;
 private ProgressDialog progressDialog;
 private static final String mail_regex="^[A-Za-z0-9+_.-]+@(.+)$";
+private CheckBox rememberMe;
 private String emails,pwds;
 
     @Override
@@ -36,9 +40,35 @@ private String emails,pwds;
         email=findViewById(R.id.emailSignIn);
         pwd=findViewById(R.id.passSignIn);
         btnsignin=findViewById(R.id.btnSignIn);
+        rememberMe=findViewById(R.id.checremenber);
 
+        SharedPreferences preferences=getSharedPreferences("checkBox",MODE_PRIVATE);
+        boolean resCheckBox=preferences.getBoolean("remember",false);
         firebaseAuth=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(this);
+
+        if (resCheckBox){
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+            }else {
+                Toast.makeText(this, "Please sign in !", Toast.LENGTH_SHORT).show();
+            }
+        rememberMe.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if (buttonView.isChecked()){
+                SharedPreferences preferences=getSharedPreferences("checkBox",MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.putBoolean("remember",true);
+                editor.apply();
+            } else if (!buttonView.isChecked()) {
+                SharedPreferences preferences=getSharedPreferences("checkBox",MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferences.edit();
+                editor.putBoolean("remember",false);
+                editor.apply();
+            }
+            }
+        });
+
         signup.setOnClickListener(v ->{
             startActivity(new Intent(getApplicationContext(),sign_up.class));
             Toast.makeText(this,"Let's create account",Toast.LENGTH_LONG).show();
