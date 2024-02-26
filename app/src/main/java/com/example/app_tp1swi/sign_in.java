@@ -48,7 +48,7 @@ private String emails,pwds;
         progressDialog=new ProgressDialog(this);
 
         if (resCheckBox){
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), profilActivity.class));
             }else {
                 Toast.makeText(this, "Please sign in !", Toast.LENGTH_SHORT).show();
             }
@@ -109,7 +109,7 @@ private String emails,pwds;
         if (loggedUser!=null){
             if (loggedUser.isEmailVerified()){
                 finish();
-                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), profilActivity.class));
                 progressDialog.dismiss();
             }else {
                 Toast.makeText(this, "Please verify your Email", Toast.LENGTH_SHORT).show();
