@@ -2,14 +2,19 @@ package com.example.app_tp1swi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,13 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class profilActivity extends AppCompatActivity {
+public class profilActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 private EditText name,email,phone;
 private Button BtnEdit,BtnLogout;
-private FirebaseDatabase firebaseDatabase;
 private FirebaseAuth firebaseAuth;
 private FirebaseUser loggedUser;
+private FirebaseDatabase firebaseDatabase;
 private DatabaseReference reference;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private ImageView iconMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +46,10 @@ private DatabaseReference reference;
         firebaseAuth=FirebaseAuth.getInstance();
         loggedUser=firebaseAuth.getCurrentUser();
         reference=firebaseDatabase.getReference().child("Users").child(loggedUser.getUid());
+        drawerLayout=findViewById(R.id.drawar_layout_profile);
+        navigationView=findViewById(R.id.navigation_view_profile);
+        iconMenu=findViewById(R.id.icon_profile);
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -54,6 +66,22 @@ private DatabaseReference reference;
                 Toast.makeText(profilActivity.this, "Error !", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        navigationDrawer();
+        navigationView.setNavigationItemSelectedListener(item -> {
+            if (item.getItemId()==R.id.profile){
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else if (item.getItemId()==R.id.ticketElectrique) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else if (item.getItemId()==R.id.devices){
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+            return true;
+        });
+
+
         BtnLogout.setOnClickListener(v->{
             SharedPreferences preferences=getSharedPreferences("checkBox",MODE_PRIVATE);
             SharedPreferences.Editor editor=preferences.edit();
@@ -72,5 +100,29 @@ private DatabaseReference reference;
             Toast.makeText(this, "Your Data has been Changed successfully", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), profilActivity.class));
         });
+    }
+
+    private void navigationDrawer(){
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setCheckedItem(R.id.profile);
+        iconMenu.setOnClickListener(v ->{
+            if (drawerLayout.isDrawerVisible(GravityCompat.START)){drawerLayout.closeDrawer(GravityCompat.START);}
+            else drawerLayout.openDrawer(GravityCompat.START);
+        } );
+        drawerLayout.setScrimColor(getResources().getColor(R.color.bnb));
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.START)){drawerLayout.closeDrawer(GravityCompat.START);}
+        else{super.onBackPressed();}
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return true;
     }
 }
